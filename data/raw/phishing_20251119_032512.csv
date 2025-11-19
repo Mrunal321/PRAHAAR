@@ -1,0 +1,161 @@
+scenario,difficulty,body,summary,red_flags
+salary_slip,easy,"[TRAINING SIMULATION - DO NOT FORWARD]
+Subject: Revised Salary Slip for Your Review
+
+Dear Employee,
+
+We hope this message finds you well. We are pleased to inform you that your salary slip has been revised for the month of October 2023. Please find the updated document attached. 
+
+To ensure you have the latest information, we kindly request that you download your revised salary slip using the following link:
+
+[Download Revised Salary Slip](http://example-phishing-link.com)
+
+If you have any questions or concerns regarding your salary slip, please do not hesitate to reach out.
+
+Best regards,
+HR Department
+
+[This is an automated message, please do not reply.]
+",The email prompts the recipient to download a document from a suspicious link.,"- The sender's email address is not from a known domain.
+- The download link is suspicious and does not point to a legitimate company website."
+salary_slip,medium,"[TRAINING SIMULATION - DO NOT FORWARD]
+Subject: **Important: Revised Salary Slip Available**
+
+Dear Employee,
+
+We hope this message finds you well. As part of our commitment to keeping you informed about your remuneration, we have revised the salary slip for the current month. 
+
+Please download your updated salary slip immediately using the link below:
+
+[Download Your Salary Slip](http://fake-link-to-download-salary-slip.com)
+
+If you have any questions or concerns, feel free to reach out to the HR department.
+
+Thank you for your attention.
+
+Sincerely,
+The Payroll Team
+
+*This communication is intended only for the individual or entity to which it is addressed. If you have received this in error, please notify the sender.*",The email prompts the recipient to download a document via a suspicious link.,"- The sender's email address does not match official company domains.
+- The link provided appears to be an external site and not an official company portal."
+salary_slip,hard,"[TRAINING SIMULATION - DO NOT FORWARD]
+Subject: Revised Salary Slip Available
+
+Dear Employee,
+
+We hope this message finds you well. We have recently updated our payroll records, and we need you to review your revised salary slip for the current month. Please click the link below to download your updated document:
+
+[Download Your Revised Salary Slip](http://maliciouslink-example.com)
+
+This is important to ensure that there are no discrepancies in your payment. If you have any questions, feel free to contact the HR department.
+
+Best regards,
+HR Team
+
+*Please do not reply to this email.*
+
+[Please note: this email is part of a training simulation for cybersecurity awareness.]",An email requesting the download of a revised salary slip via a link.,"- The link provided appears suspicious and does not include a company domain.
+- The email urges immediate action without prior legitimate communication."
+it_support,easy,"[TRAINING SIMULATION - DO NOT FORWARD]
+Subject: Action Required: Password Reset Verification
+
+Dear User,
+
+We have detected unusual activity on your account, and as a precaution, we require a verification of your identity to proceed with a password reset. Please click the link below to confirm your identity and complete the password reset process:
+
+[Click here to verify your account](http://phishy-url.com)
+
+If you do not verify your identity within 24 hours, your account may be temporarily suspended.
+
+Thank you for your cooperation.
+
+Best Regards,
+IT Help Desk
+
+[Company Logo]
+
+(Note: This is an auto-generated message, please do not reply.)",A request for urgent password reset verification.,"- Requests urgent action with a link to click.
+- Inconsistent email address or domain from official communications."
+it_support,medium,"[TRAINING SIMULATION - DO NOT FORWARD]
+Subject: Important: Password Reset Verification Required
+
+Dear User,
+
+We have received a request to reset the password for your account. To confirm your identity and proceed with the reset process, please verify your account by clicking the link below:
+
+[Verify Your Account](http://fakebank.com/verify?user=12345)
+
+Please note that this verification link will expire in 24 hours. If you did not request a password reset, please disregard this email.
+
+Thank you,
+IT Help Desk
+
+[Find us on Twitter for updates]
+
+Best regards,
+The IT Support Team
+
+[This is an automated message. Please do not reply.]",User receives an email requesting password reset verification from an IT desk.,"- The email contains a suspicious link that does not match the official company's domain.
+- Use of urgency (link expires in 24 hours) to pressure user to act quickly."
+account_verification,easy,"[TRAINING SIMULATION - DO NOT FORWARD]
+Subject: Urgent: Unusual Login Activity Detected
+
+Dear User,
+
+We have detected unusual login activity on your account and require immediate confirmation to secure your information. Please verify your account at the link below:
+
+[Click here to confirm your account](http://malicious-link-example.com)
+
+Failure to confirm within 24 hours may result in temporary suspension of your account.
+
+Thank you for your prompt attention to this matter.
+
+Best,  
+The Security Team
+
+Note: This is an automated message, please do not reply.",Phishing email impersonating a security team to prompt account verification.,"- Request for urgent action with a time limit
+- Suspicious link leading to a potentially unsafe site"
+account_verification,medium,"[TRAINING SIMULATION - DO NOT FORWARD]
+Subject: Urgent: Unusual Login Activity Detected
+
+Dear User,
+
+We have detected unusual login activity in your account originating from an unfamiliar device. To ensure the security of your account, we ask that you verify your login details immediately.
+
+Please click on the link below to confirm your identity:
+[Phishing Link]
+
+Failure to respond within 24 hours may result in a temporary suspension of your account for your safety.
+
+Thank you for your prompt attention to this matter.
+
+Sincerely,
+The Security Team
+
+Note: This is an automated message, please do not reply.
+
+[Company Name] - Protecting your security is our top priority.",Security team claims unusual login and requests verification.,"- Generic greeting; lacks personalization
+- Urgent tone with a threat of account suspension
+- Suspicious link that does not correspond to official domain"
+account_verification,hard,"[TRAINING SIMULATION - DO NOT FORWARD]
+Subject: Unusual Login Attempt - Immediate Verification Needed
+
+Dear User,
+
+We have detected an unusual login attempt to your account from an unrecognized device. To ensure the security of your account, we require your immediate confirmation.
+
+Please click on the link below to review the login attempt and verify your information:
+[Click Here to Secure Your Account](http://phishing-site-example.com)
+
+Failure to verify your account within 24 hours may result in a temporary suspension for your protection.
+
+Thank you for your attention to this matter.
+
+Best Regards,
+The Security Team
+
+[Important: Please do not reply to this email.]
+
+[Disclaimer: This email is for training purposes only.]
+",Urgent request for account verification due to security concerns.,"- The link directs to a suspicious URL instead of the official site.
+- The email creates a sense of urgency, pressuring users to act quickly."

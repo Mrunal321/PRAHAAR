@@ -1,6 +1,6 @@
 1. What is our main work?
 
-From the slides, PRAHAAR is essentially:
+PRAHAAR is essentially:
 
 “Prescriptive Reconstruction of Attacks and Holistic analysis of Alerts via Agentic-AI for Robust Cybersecurity… using an offensive (Red) agent and a defensive (Blue) agent, evaluated via Red vs Blue interaction.”
 

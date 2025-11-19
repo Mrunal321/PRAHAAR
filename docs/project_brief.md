@@ -49,16 +49,16 @@ Once these boxes are checked you will have the backbone needed to iterate on sma
 
 ## PRAHAAR Workflow Roadmap
 
+
 ```mermaid
 flowchart TD
-    A[(Phase 0)Project Setup] --> B[Phase 1\nRed Agent Baseline]
-    B --> C[(Phase 2)Blue Agent Baseline]
-    C --> D[(Phase 3)Closed Loop Simulation]
-    D --> E[(Phase 4)Richer Data]
-    E --> F[(Phase 5)Blue Improvements]
-    F --> G[(Phase 6)Experiments + Reporting]
-    G --> H[(Phase 7)Optional Extensions]
-```
+    A[Phase 0\nProject Setup] --> B[Phase 1\nRed Agent Baseline]
+    B --> C[Phase 2\nBlue Agent Baseline]
+    C --> D[Phase 3\nClosed Loop Simulation]
+    D --> E[Phase 4\nRicher Data]
+    E --> F[Phase 5\nBlue Improvements]
+    F --> G[Phase 6\nExperiments + Reporting]
+    G --> H[Phase 7\nOptional Extensions]
 
 | Phase | Focus | Key Tasks |
 | --- | --- | --- |

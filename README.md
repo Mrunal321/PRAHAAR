@@ -37,6 +37,20 @@ This repository collects everything for the PRAHAAR project: data, code, documen
 
 All new code should live under `src/` and import via the package path (e.g., `from red_agent.generator import ...`). Keep documentation in `docs/`, generated artifacts in `data/`, and automation scripts under `scripts/`.
 
+## Profile-aware sending (new)
+
+- `scripts/send_emails.py` generates personalized training emails from a CSV/JSON of targets (columns: `email`, `name`, `role`, `company`, `department`, `interests`, `recent_events`).
+- Defaults to **dry-run** and writes `.eml` files under `data/processed/outbox/`. Add `--send` to use SMTP.
+- Env vars for delivery: `SMTP_HOST`, `SMTP_PORT` (default 587), `SMTP_USER`, `SMTP_PASS`, `FROM_EMAIL` (default `training@example.com`), optional `SMTP_USE_TLS` (`true` by default).
+- Example (Mailtrap sandbox):  
+  ```bash
+  PYTHONPATH=src OPENAI_API_KEY=... \
+  SMTP_HOST=sandbox.smtp.mailtrap.io SMTP_PORT=2525 \
+  SMTP_USER=... SMTP_PASS=... FROM_EMAIL="Training Team <training@example.com>" \
+  python scripts/send_emails.py targets.csv --scenario salary_slip --difficulty medium --send
+  ```
+- Adds `Date` and `Message-ID` headers to reduce spam score; logs `[start]`, `[ready]`, `[send]`, `[sent]` (or `[error]`) for visibility.
+
 ## Next actions checklist
 
 - [ ] Create `.env.example` listing required environment variables.
@@ -46,3 +60,29 @@ All new code should live under `src/` and import via the package path (e.g., `fr
 - [ ] Record observations/metrics under `docs/experiments/` as you run simulations.
 
 Once these boxes are checked you will have the backbone needed to iterate on smarter agents, add metrics, and write up the experimental results.
+
+## PRAHAAR Workflow Roadmap
+
+```mermaid
+flowchart TD
+    A[Phase 0\nProject Setup] --> B[Phase 1\nRed Agent Baseline]
+    B --> C[Phase 2\nBlue Agent Baseline]
+    C --> D[Phase 3\nClosed Loop Simulation]
+    D --> E[Phase 4\nRicher Data]
+    E --> F[Phase 5\nBlue Improvements]
+    F --> G[Phase 6\nExperiments + Reporting]
+    G --> H[Phase 7\nOptional Extensions]
+```
+
+| Phase | Focus | Key Tasks |
+| --- | --- | --- |
+| **0. Project setup** *(done)* | Repo scaffolding | `docs/`, `src/`, `data/` tree, README, requirements, `.env`, shared config & LLM client |
+| **1. Red agent baseline** *(done)* | Phishing email generation | Scenario catalog, JSON prompt enforcing `[TRAINING SIMULATION …]`, `scripts/generate_dataset.py` producing CSVs |
+| **2. Blue agent baseline** *(done)* | LLM-based phishing classification | `PhishingClassifier`, `scripts/evaluate_blue_agent.py`, basic accuracy |
+| **3. Closed-loop simulation** *(done)* | Red vs. Blue logging | `scripts/run_simulation.py`, `data/processed/simulation_log.txt` |
+| **4. Richer data** | Harder & benign samples | Add benign templates/generator, attach metadata (sender, domains, attachment info), vary difficulty tactics |
+| **5. Blue improvements** | Better defenses | Extend classifier prompt with metadata, add heuristics (domain allow/deny lists, attachment filters), compute precision/recall/confusion matrix |
+| **6. Experiments & reporting** | Evidence for final report | Batch runs with different seeds/models, store metrics in `docs/experiments/*.md`, plot detection vs. difficulty, document limitations |
+| **7. Optional extensions** | Stretch goals | SMS/voice phishing, simple attack-chain reconstruction, adaptive Red agent that reacts to Blue misses |
+
+Following these phases keeps the project coherent: start with a safe baseline, iterate toward richer simulations and defenses, and capture metrics for the PRAHAAR report.

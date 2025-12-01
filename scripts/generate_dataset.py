@@ -51,7 +51,15 @@ def main() -> None:
 
     with output_path.open("w", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(
-            handle, fieldnames=["scenario", "difficulty", "body", "summary", "red_flags"]
+            handle,
+            fieldnames=[
+                "scenario",
+                "difficulty",
+                "subject",
+                "body",
+                "summary",
+                "red_flags",
+            ],
         )
         writer.writeheader()
         writer.writerows(rows)

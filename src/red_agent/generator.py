@@ -6,6 +6,7 @@ from typing import Dict
 
 from common.config import Settings
 from common.llm_client import LLMClient
+from common.profile import Profile
 from .scenarios import Scenario
 
 
@@ -13,6 +14,7 @@ from .scenarios import Scenario
 class PhishingExample:
     scenario: str
     difficulty: str
+    subject: str
     body: str
     summary: str
     red_flags: str
@@ -33,12 +35,22 @@ class PhishingGenerator:
             "for training and highlight red flags."
         )
 
-    def generate(self, scenario: Scenario, difficulty: str) -> PhishingExample:
+    def generate(
+        self, scenario: Scenario, difficulty: str, profile: Profile | None = None
+    ) -> PhishingExample:
+        profile_block = (
+            profile.to_prompt_block()
+            if profile
+            else "N/A (keep tone neutral and generic)."
+        )
         user_prompt = (
             f"Scenario: {scenario.description}\n"
             f"Difficulty: {difficulty}\n"
+            "Profile cues (use only as background; do not invent new facts):\n"
+            f"{profile_block}\n"
             "Respond ONLY with valid JSON matching this schema:\n"
-            '{\"body\": \"[TRAINING SIMULATION - DO NOT FORWARD]\\n...email...\", '
+            '{\"subject\": \"short subject line for the training email\", '
+            '"body\": \"[TRAINING SIMULATION - DO NOT FORWARD]\\n...email...\", '
             '"summary\": \"one sentence\", '
             '"red_flags\": "- reason 1\\n- reason 2\"}\n'
             "Do not include any text before or after the JSON. "
@@ -54,6 +66,7 @@ class PhishingGenerator:
         return PhishingExample(
             scenario=scenario.name,
             difficulty=difficulty,
+            subject=parsed.get("subject", "Training simulation"),
             body=parsed.get("body", ""),
             summary=parsed.get("summary", "Automatically generated for training."),
             red_flags=parsed.get("red_flags", "See training email for details."),

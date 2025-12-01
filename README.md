@@ -51,6 +51,17 @@ All new code should live under `src/` and import via the package path (e.g., `fr
   ```
 - Adds `Date` and `Message-ID` headers to reduce spam score; logs `[start]`, `[ready]`, `[send]`, `[sent]` (or `[error]`) for visibility.
 
+## Quick run commands
+
+- Environment: `python3 -m venv .venv && source .venv/bin/activate && pip install -r requirements.txt`
+- Base env vars (same shell): `export PYTHONPATH=src OPENAI_API_KEY=...`
+- Generate dataset (CSV under `data/raw/`): `python scripts/generate_dataset.py --per-scenario 3`
+- Run red vs blue simulation: `python scripts/run_simulation.py`
+- Evaluate blue agent on a dataset: `python scripts/evaluate_blue_agent.py data/raw/<your_dataset>.csv`
+- Send training emails (dry-run): `python scripts/send_emails.py targets.csv --scenario salary_slip --difficulty medium`
+- Send via SMTP (Mailtrap sandbox example):  
+  `PYTHONPATH=src OPENAI_API_KEY=... SMTP_HOST=sandbox.smtp.mailtrap.io SMTP_PORT=2525 SMTP_USER=... SMTP_PASS=... FROM_EMAIL="Training Team <training@example.com>" python scripts/send_emails.py targets.csv --scenario salary_slip --difficulty medium --send`
+
 ## Next actions checklist
 
 - [ ] Create `.env.example` listing required environment variables.

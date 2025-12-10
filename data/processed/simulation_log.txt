@@ -1,13 +1,15 @@
-salary_slip,easy,CAUGHT,0.85,- The email prompts the recipient to click on a suspicious link to access sensitive information, which is a common tactic used in phishing attempts.
-- The sender's address and the link provided do not match expected domains or formats typically associated with official payroll communications, indicating potential malicious intent.
-salary_slip,medium,CAUGHT,0.90,1. The email prompts the recipient to click on a link to download an updated salary slip, which is a common tactic used in phishing attempts to obtain personal information or install malware. 
-2. The urgency implied by the link expiring in 48 hours adds pressure to act quickly, which is a typical characteristic of phishing emails designed to catch individuals off-guard.
-salary_slip,hard,CAUGHT,0.95,- The email instructs the recipient to click on a link labeled as a 'download', which is a common tactic used in phishing to direct users to malicious sites.
-- The disclaimer stating that the email is sent from an unmonitored mailbox discourages replies and may indicate an attempt to avoid scrutiny or accountability, which is also typical in phishing attempts.
-it_support,easy,CAUGHT,0.95,- The email creates a sense of urgency by threatening account suspension, which is a common tactic used in phishing scams to provoke hasty actions from users.
-- It contains a suspicious link that does not lead to a legitimate company site, suggesting that it is attempting to harvest user credentials.
-it_support,medium,CAUGHT,0.80,- The email requests to click a link to verify an account which is a common tactic in phishing attempts to steal user credentials.
-- The lack of personalized information (like a specific username) and urging immediate action (within 24 hours) raises red flags typical of phishing scams.
-account_verification,easy,CAUGHT,0.95,1. The email contains a generic greeting and a sense of urgency, which are common tactics in phishing attempts to trick users into acting quickly without thinking. 2. The link provided in the email does not appear to belong to a legitimate domain associated with a trusted organization, suggesting it's a deceptive link meant to capture personal information.
-account_verification,medium,CAUGHT,0.90,['The email contains a suspicious link that prompts the user to confirm login activity, which is a common tactic in phishing attacks to harvest credentials.', 'The message creates a sense of urgency regarding unusual login attempts, a typical strategy used in phishing to provoke hasty actions without careful scrutiny.']
-account_verification,hard,CAUGHT,0.90,['The email requests the recipient to click on a link to verify their identity, which is a common tactic used in phishing attempts to steal personal information.', "The phrasing of 'unusual login attempt' along with urgency and the need for immediate action raises red flags, as legitimate companies typically don't ask for sensitive information via email."]
+salary_slip,easy,MISSED,0.90,- The message is explicitly labeled as a training simulation and is a placeholder with no links, attachments, or requests for credentials — typical indicators of a non-malicious/internal note.
+- It does not ask the recipient to take any action or disclose information (and even includes “DO NOT FORWARD”), so there are no common phishing cues.
+salary_slip,medium,MISSED,0.95,- Clearly marked as a training simulation and placeholder text ([TRAINING SIMULATION - DO NOT FORWARD]), indicating no malicious intent.
+- Contains no links, attachments, requests for credentials, or urgent actions typical of phishing attempts.
+salary_slip,hard,MISSED,0.00,
+it_support,easy,MISSED,0.95,- Clearly marked as a training simulation and placeholder, with no links, attachments, or requests for credentials or money that are characteristic of phishing.
+- Language is administrative (asks to regenerate) and appears internal, not attempting impersonation or urgent action to trick the recipient.
+it_support,medium,MISSED,0.90,- Explicitly marked as a training simulation and placeholder, with no links, attachments, or requests for credentials.
+- Content indicates an LLM response failure and a regenerate instruction only, showing no phishing indicators (spoofing, urgency, or malicious payload).
+account_verification,easy,MISSED,0.95,- The message is explicitly marked as a training simulation and contains only administrative text with no links, attachments, or requests for credentials or sensitive actions.
+- It shows internal/instructional content (e.g., 'DO NOT FORWARD', 'Please regenerate'), which indicates a benign system/training placeholder rather than a phishing attempt.
+account_verification,medium,MISSED,0.92,- Clearly marked as a training simulation and contains no requests for credentials or actions; intended as a placeholder, not an operational message.
+- Lacks common phishing indicators (no links, attachments, urgent demands, or impersonation), so likelihood of malicious intent is low.
+account_verification,hard,MISSED,0.90,- Explicitly labeled as a training simulation placeholder ("TRAINING SIMULATION - DO NOT FORWARD"), indicating it is not a real request.
+- Message contains no links, attachments, credential requests, or urgent calls-to-action commonly used in phishing attempts.

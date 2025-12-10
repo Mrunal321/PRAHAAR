@@ -14,6 +14,13 @@ from email.utils import formatdate, make_msgid
 from pathlib import Path
 from typing import List
 
+import sys
+
+ROOT = Path(__file__).resolve().parents[1]
+SRC_PATH = ROOT / "src"
+if str(SRC_PATH) not in sys.path:
+    sys.path.insert(0, str(SRC_PATH))
+
 from common.config import Settings
 from common.profile import Profile
 from red_agent.generator import PhishingGenerator

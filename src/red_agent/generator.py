@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import json
 from dataclasses import asdict, dataclass
-from typing import Dict
+from typing import Any, Dict
 
 from common.config import Settings
 from common.llm_client import LLMClient
@@ -57,11 +57,7 @@ class PhishingGenerator:
             "Body must resemble a realistic phishing email."
         )
         raw_response = self.client.complete(self.system_prompt, user_prompt)
-        cleaned = self._strip_code_fence(raw_response)
-        try:
-            parsed = json.loads(cleaned)
-        except json.JSONDecodeError as exc:
-            raise RuntimeError(f"Generator returned invalid JSON: {raw_response}") from exc
+        parsed = self._parse_json_safely(raw_response, scenario, difficulty)
 
         return PhishingExample(
             scenario=scenario.name,
@@ -83,3 +79,31 @@ class PhishingGenerator:
                 lines = lines[:-1]
             return "\n".join(lines).strip()
         return stripped
+
+    def _parse_json_safely(
+        self, raw_response: str, scenario: Scenario, difficulty: str
+    ) -> Dict[str, Any]:
+        cleaned = self._strip_code_fence(raw_response)
+        if cleaned:
+            try:
+                return json.loads(cleaned)
+            except json.JSONDecodeError:
+                start = cleaned.find("{")
+                end = cleaned.rfind("}")
+                if start != -1 and end != -1 and end > start:
+                    snippet = cleaned[start : end + 1]
+                    try:
+                        return json.loads(snippet)
+                    except json.JSONDecodeError:
+                        pass
+        # Fallback: return a safe placeholder so the pipeline does not crash
+        return {
+            "subject": f"[Training] {scenario.name} ({difficulty})",
+            "body": (
+                "[TRAINING SIMULATION - DO NOT FORWARD]\n"
+                f"This placeholder was used because the LLM response was invalid for scenario "
+                f"{scenario.name} at difficulty {difficulty}. Please regenerate."
+            ),
+            "summary": "Placeholder email due to LLM parse failure.",
+            "red_flags": "- Placeholder generated because JSON parsing failed.",
+        }

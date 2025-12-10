@@ -25,4 +25,9 @@ SCENARIOS: List[Scenario] = [
         description="Security team claims unusual login and asks for confirmation.",
         difficulty_levels=["easy", "medium", "hard"],
     ),
+     Scenario(
+        name="Aadhar_verification",
+        description="As per government policy Aadhar verification for all citizens once a year is compulsary.",
+        difficulty_levels=["easy", "medium", "hard"],
+    ),
 ]

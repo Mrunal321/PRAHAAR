@@ -1,0 +1,10 @@
+.venv/
+__pycache__/
+*.pyc
+.env
+.env.save
+.env.save.*
+.DS_Store
+.data_cache/
+data/raw/*.csv
+data/processed/outbox/
